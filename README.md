@@ -25,7 +25,7 @@ Make sure you adjust the related port as they rely on each other
 Design style inspired by Discord
 
 Sleek ChatRooms that use WebSockets (socket.io), allowing for lightning fast communication with anyone in the world! 
-Multiple rooms are supported 
+
 More features coming soon ✨
 
 ### Known Issues:
