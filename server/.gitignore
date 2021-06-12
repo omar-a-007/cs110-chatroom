@@ -234,7 +234,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Other
-.git/
-
 # End of https://www.gitignore.io/api/windows
