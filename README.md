@@ -19,8 +19,13 @@ http://chat-client-oa.herokuapp.com/
 
 *Feel free to use this test account  
 email: test2@test.com  
-pass: tester*
+pass: tester  
 
+email: sir@edward.com
+pass: siredward
+
+email: harlem@globetrotters.com
+pass: harlem
 
 The heroku server disconnects after a long period of inactivity.  
 So be sure to start the server first.  
@@ -51,12 +56,6 @@ Ports can be customized in `client/constants` and `server/constants`
 
 Make sure you adjust the related port as they rely on each other
 
-## Known Issue:
-/login and /signup
--   If the action fails (invalid data, already taken account, etc), you need to re-enter your data.
--   The easiest way is to refresh.
--   You will still see your old data, BUT: it will not persist through to the form action, causing the login/signup to fail again.
-    -   I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
 
 ## Features:
 #### Homepage
