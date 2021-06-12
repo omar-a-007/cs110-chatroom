@@ -24,8 +24,11 @@ I completed the project using using websockets, thus both a server and client se
 Environment variables can be found in the client/server constants folder (for setting port, etc)
 
 ### Known Issues:
-    Upon login or registration, if the action fails (invalid data, already taken account, etc)
-    Then you need to re-enter your data. The easiest way is to refresh. Your old data will still show but it will not persist through to the button click, causing it to fail again. I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
+/login and /signup
+-   If the action fails (invalid data, already taken account, etc), you need to re-enter your data.
+-   The easiest way is to refresh.
+-   You will still see your old data, BUT: it will not persist through to the form action, causing the login/signup to fail again.
+-   -   I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
 
 ## Features:
 #### Homepage
@@ -53,6 +56,13 @@ Environment variables can be found in the client/server constants folder (for se
     
 #### Everywhere
 -   Authentication, Data Validation+Sanitization (via express-validator, socket based checking, and Formik)
+
+#### Server
+-   Api Routes
+-   -   Everything is serverd through <server>/api/
+-   -   All routes have been thoroughly tested via Postman
+-   Sockets served via the default GET <server>/socket.io/
+-   Everything else is blocked with a basic 404 Not Authorized Response
 
 ## Toolset
 #### Frameworks
