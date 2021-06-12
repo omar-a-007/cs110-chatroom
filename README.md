@@ -116,3 +116,7 @@ To specify a different port for the client: modify `/client/package.json` under 
 -   yup                     (JS schema builder, mainly used in conjunction with formik)
 -   socket.io-client        ✨ Magic ✨
 
+## Screenies
+![Screenshot: Homepage](/screenies/Homepage.png.png)
+![Screenshot: Chatroom](/screenies/In_Chatroom.png.png)
+![Screenshot: Various Pages](/screenies/Pages.png.png)
