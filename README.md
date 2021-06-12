@@ -9,7 +9,7 @@ Sleek ChatRooms that use WebSockets (socket.io), allowing for lightning fast com
 More features coming soon ✨
 
 ## Online Demo
-***Want to take it for a spin? Sure thing!***
+***Want to take it for a spin? Sure thing 🚗!*** 
 
 **Client**  
 http://chat-client-oa.herokuapp.com/  
