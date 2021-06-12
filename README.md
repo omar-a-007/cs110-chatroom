@@ -37,6 +37,7 @@ Some of the settings you may wish to modify include the following
 ***/server/constants/default.json***
 -   mongoURI: Make the project work on any mongo instance! Even a local one :)
 -   **server_port**: the port the server runs on and listens for queries and socket data
+-   **client_address**: array of clients allowed to make socket requests. If you change the client port, make sure you change this too.
 -   **message_history_limit**: The number maximum number of messages that will be retrieved when entering a room
 -   -   Why would we want to limit this? Two reasons
 -   -   1) Imagine a chatroom with thousands of messages. Because of how it is configured to populate between different MongoDB collections (ChatMessage populates User data), internally it runs a seperate query for ***each** record in order to populate that data.
