@@ -31,7 +31,7 @@ The design style is heavily inspired by discord.
 -   You will still see your old data, BUT: it will not persist through to the form action, causing the login/signup to fail again.
 -   -   I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
 
-### Configuration:
+### Changeable Configuration:
 Some of the settings you may wish to modify include the following
 
 ***/server/constants/default.json***
