@@ -10,9 +10,14 @@ More features coming soon ✨
 
 ## Online Demo
 ***Want to take it for a spin? Sure thing!***  
-Client: http://chat-client-oa.herokuapp.com/  
+**Client**
+http://chat-client-oa.herokuapp.com/  
+*Feel free to use this test account  
+email: test2@test.com  
+pass: tester*
 
-Server: https://chat-server-oa.herokuapp.com/  
+**Server**
+https://chat-server-oa.herokuapp.com/  
 You can't do much with the server on its own (unless you use POSTMAN or similar)  
 I left a few GET API paths open for testing purposes
 
