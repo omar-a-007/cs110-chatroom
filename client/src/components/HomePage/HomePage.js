@@ -132,7 +132,7 @@ function HomePage() {
         <div className="text-center float-left">
           <button className="btn btn-secondary mb-3 ml-2 mr-5" onClick={() => createRoomHandler() }> + Create New Room +</button>
         </div>
-        <input type="text"  id="Search" placeholder="Search..." name="" value={search} className="form-control search"
+        <input type="text"  id="Search" placeholder="Search..." name="" value={search} className="form-control search" autoComplete={false}
                 onChange={(event) => setSearch(event.target.value)}
                 onKeyPress={(event) => event.key === 'Enter' ? handleSearch(event) : null}  />
         <div className="input-group-prepend mr-2">
