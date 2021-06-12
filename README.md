@@ -61,7 +61,7 @@ To specify a different port for the client: modify `/client/package.json` under 
 -   🔼🔽 Sort Chatrooms by creation date (Ascending, decending)
 -   📊 Room stats: Participants, Messages, Creation Date
 -   🔎 Search Rooms
--   🗑🎞🔨 Long room names will truncate with ellipses 
+-   🔨 Long room names will truncate with ellipses 
 -   🎬 Static (for now) room image
 
 
@@ -71,9 +71,9 @@ To specify a different port for the client: modify `/client/package.json` under 
 -   📛 Entering an empty string informs the user to enter a message 
 -   📜 Displays a history of messages (limited to 20, but limit is customizable through constants)
 -   ⏬ Chat scrolls to bottom upon loading or recieving a new message
-    -   In the bottom right, there is a small black dot when you click on it, it will scroll to the bottom
+    -   In the bottom right, there is a small black dot when you click on it, it will scroll to the bottom ⚫
 -   🎬 Hover over a message for additional actions
-    ❌ As the author of a message, you can delete it (other actions are not yet supported). If youre not the author this isnt displayed.
+    🗑 As the author of a message, you can delete it (other actions are not yet supported). If youre not the author this isnt displayed.
     In the backend, the logged in user is also checked with the claimed author id to protect against forgery attacks
 -   🔐 Socket Authentication Middleware
     Persists token and makes sure we are logged in when messaging
