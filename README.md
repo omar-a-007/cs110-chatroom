@@ -1,6 +1,19 @@
 # Extended Chatroom Project
 
-## Quick Usage Instructions
+## Info
+
+Design style inspired by Discord  
+
+Sleek ChatRooms that use WebSockets (socket.io), allowing for lightning fast communication with anyone in the world!  
+
+More features coming soon ✨
+
+## Online Demo
+***Want to take it for a spin? Sure thing!***  
+Server: https://chat-server-oa.herokuapp.com/  
+Client: http://chat-client-oa.herokuapp.com/
+
+## Local Usage Instructions
 ### Start Server
 
 1. cd server
@@ -15,22 +28,10 @@
 
 ## View Frontend
 
-Navigate to: http://localhost:3000
+Navigate to: http://localhost:3000  
 Ports can be customized in `client/constants` and `server/constants`
 
 Make sure you adjust the related port as they rely on each other
-
-## Info
-
-Design style inspired by Discord
-
-Sleek ChatRooms that use WebSockets (socket.io), allowing for lightning fast communication with anyone in the world! 
-
-More features coming soon ✨
-
-### Want to take it for a spin? Sure thing! 
-Server: https://chat-server-oa.herokuapp.com/  
-Client: http://chat-client-oa.herokuapp.com/
 
 ### Known Issues:
 /login and /signup
@@ -57,7 +58,7 @@ Some of the settings you may wish to modify include the following
 
 ***/client/constants/default.json***
 -   **SERVER_PORT**: Make sure you change this if you change the servers port.
-Note: Do you want to run the client on a different port? React is configured to run on port 3000 by default (and will prompt you if its in use to automatically pick another)
+Note: Do you want to run the client on a different port? React is configured to run on port 3000 by default (and will prompt you if its in use to automatically pick another)  
 To specify a different port for the client: modify `/client/package.json` under scripts: start, change this to `"start": "PORT=3006 react-scripts start"` as an example to change it to port 3006
 
 ## Features:
