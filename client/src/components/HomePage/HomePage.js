@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
-import Button from "react-bootstrap/Button"
 import Loader from "react-loader-spinner"
 import { Redirect } from "react-router"
-import moment from "moment"
-import "./HomePage.css"
-import "../ChatRoom/ChatRoom.css"
-import Rooms from './Rooms/Rooms'
+
 import { joinChatRoom, getChatRooms } from "../../utils/requests"
 import {ACCESS_TOKEN_NAME} from '../../constants/constants'
+import Rooms from './Rooms/Rooms'
+import "./HomePage.css"
+import "../ChatRoom/ChatRoom.css"
 
 const getChatRoomId = () => localStorage.getItem("chatRoomId")
 
@@ -25,8 +24,6 @@ function HomePage() {
     setInitialized(true);
     setSpinner(true)
     const response = await getChatRooms()
-    // console.log("getRooms response")
-    // console.log(response)
     setRooms(response.data)
     setSpinner(false)
   }
@@ -114,8 +111,7 @@ function HomePage() {
       }
 
     })();
-
-      `
+    `
 
     document.body.appendChild(script);
   
@@ -127,8 +123,6 @@ function HomePage() {
   if (redirect)            return <Redirect to="/chatroom" />
   if (redirectLogin)       return <Redirect to='/login' />
   if (redirectCreateRoom)  return <Redirect to='/createroom' />
-
-
 
 
   return (    
@@ -147,7 +141,7 @@ function HomePage() {
 
         <div>
           <button className="btn btn-secondary mb-3 ml-2 mr-2 sort_btn" style={{width: "150px"}} data-tag="asc" onClick={(event) => sortRoomHandler(event) }>
-            Sort By Newest <i class="ml-1 fas fa-sort-down"></i>
+            Sort By Newest <i className="ml-1 fas fa-sort-down"></i>
           </button>
         </div>
       </div>
