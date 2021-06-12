@@ -64,7 +64,7 @@ To specify a different port for the client: modify `/client/package.json` under 
 -   Search Rooms
 
 #### Chatroom
--   Emoticons are emojified, thats things like :) :D ;D etc etc
+-   😏 Emoticons are emojified, thats things like :) :D ;D etc etc
 -   🔴 User online status is displayed with a green (online) or gray (offline) dot
 -   📛 Entering an empty string informs the user to enter a message 
 -   📜 Displays a history of messages (limited to 20, but limit is customizable through constants)
