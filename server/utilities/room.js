@@ -1,5 +1,6 @@
 var ObjectID = require('mongoose').Types.ObjectId
 const {ChatRoom, ChatMessage} = require('../models')
+const history_limit = require('config').get('message_history_limit')
 
 /* Do the below functions actually await/async correctly? 
  * Have encountered an issue where it returns a pending promise that later resolves, requiring an await on the calling method
@@ -9,7 +10,7 @@ let list     = async (id)      => await ChatRoom.find( {status:true} ).lean()
 let detail   = async (room_id) => await ChatRoom.findById(room_id)
 let messages = async (room_id) => await ChatMessage.find({chat_room_id: new ObjectID(room_id)} /*, {}, {lean: true}*/ )
                                     .sort({createdAt: -1})
-                                    .limit(20)    // Lets limit how many messages we retrieve to reduce server load
+                                    .limit(history_limit)    // Lets limit how many messages we retrieve to reduce server load and client lag
                                     .populate('author', 'socket_id birthday is_online image bio username full_name') // Each message that is populated is a seperate query
                                     .lean()       // Since we aren't modifying the messages, return a lean result to increase performance
 let create   = async(data) => {
