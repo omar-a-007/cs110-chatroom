@@ -59,22 +59,24 @@ io.on('connection', async (socket) => {
     socket.user.socket_id = socket.client.id
     socket.user.is_online = true
     socket.user.save( (err) => { if(err) console.log(err) } )
-
-    socket.on("join", async (roomID) => {
-
-        // Join, or make, that specific socket room
-        console.log ("socket.on(join) " + roomID)
-        socket.join(roomID)   
-        socket.room = roomID
-        io.emit("roomJoined", roomID)
-
-        // Query MongoDB for room message history
-        msgs = await messages(roomID)
-        socket.emit('init', msgs)
-
-    })
   }
-  catch (e) { console.log(e) }
+  catch (e) { console.log('Unable set socket.user'); console.log(e)}
+
+  // Join, or make, that specific socket room
+  socket.on("join", async (roomID) => {
+    console.log ("socket.on(join) " + roomID)
+    socket.join(roomID)   
+    socket.room = roomID
+    io.emit("roomJoined", roomID)
+    
+    try {
+      // Query MongoDB for room message history
+      msgs = await messages(roomID)
+      socket.emit('init', msgs)  
+    }
+    catch (e) { console.log('Unable to retrieve messages.'); console.log(e)}
+  })
+
 
   socket.on("message", async data => {
     console.log("socket.on(message) data")
@@ -92,7 +94,7 @@ io.on('connection', async (socket) => {
       */
       io.emit("message", new_message);
     }
-    catch (e) { console.log(e) }
+    catch (e) { console.log('Unable to create message.'); console.log(e)}
   })
 
   socket.on("delete", async (msg_id) => {

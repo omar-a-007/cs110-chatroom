@@ -9,7 +9,7 @@ const APIURL = require('../constants/constants').API_BASE_URL
  * @const joinChatRoom      used in components: HomePage, CreateRoom
 
  */
-export const getChatRooms = () => axios.get(`${APIURL}/api/room/list`) 
+export const getChatRooms    = ()              => axios.get( `${APIURL}/api/room/list`) 
 export const getRoomMessages = (roomId)        => axios.get( `${APIURL}/api/room/messages/${roomId}`)
 export const createRoomApi   = (name, token)   => axios.post(`${APIURL}/api/room/create`, { name },   { headers: { 'token': token}})
 

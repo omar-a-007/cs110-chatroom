@@ -27,10 +27,8 @@ function ChatRoomPage( {location} ) {
     const [redirectLogin, setRedirectLogin] = useState(false);
 
     useEffect(() => {
-        if(! localStorage.getItem(ACCESS_TOKEN_NAME) ) {
-            setRedirectLogin(true);
-            return
-        }
+        const token = localStorage.getItem(ACCESS_TOKEN_NAME)
+        if(!token ) return setRedirectLogin(true)
 
         // Establish socket connection with server
         socket = io( API_BASE_URL, { query: { "authToken": token} } )
@@ -42,7 +40,7 @@ function ChatRoomPage( {location} ) {
         socket.on('init', (msgs) => setMessages( msgs.reverse() ) )
 
         return () => { socket.off() }
-    }, [API_BASE_URL, location.search]) // Only trigger when the page has loaded or address changes
+    }, []) // Only trigger when the page has loaded
     
     useEffect(() => {
         socket.on('message', (message) => setMessages([ ...messages, message ]))    // Add message to end of messages array

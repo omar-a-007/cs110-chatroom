@@ -45,8 +45,10 @@ const authenticate_socket = (io) => {
   io.use(async (socket, next) => {
     try {
       const token = socket.handshake.query.authToken
-      if (!token) throw new Error('Token not found')
+      if (!token || token === 'null') throw new Error('Token not found')
       
+      console.log(socket.handshake.query)
+      console.log(token)
       const validated_token = await validToken(token) //token contains user id, token, expiration
       
       // Retrieve the user as a mongoose document and set this to socket.user, allowing us to modify it easily

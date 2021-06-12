@@ -72,7 +72,7 @@ const Account = require("../../utilities/users")
             let user = await Account.login({ email: req.body.email, password: req.body.password })
             let token = await createToken( { id: user._id })
             
-            res.status(200).json({token, userId: user.id})
+            res.status(200).json({token, userId: user._id})
         }
         catch (e) { res.status(e.code ?? 300).send({ errors: [ {msg: e.msg ?? 'Invalid Login'} ] }) }
     }
@@ -102,7 +102,7 @@ const Account = require("../../utilities/users")
             const user = await Account.create({ username: req.body.username, full_name: req.body.full_name, email: req.body.email, password: req.body.password })
             let token = await createToken( { id: user._id })
             
-            res.status(200).json({token, userId: user.id})
+            res.status(200).json({token, userId: user._id})
         }
         catch (e) { res.status(e.code ?? 300).send({ errors: [ {msg: e.msg ?? 'Invalid Login'} ] }) }
     }

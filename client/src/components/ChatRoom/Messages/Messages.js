@@ -16,7 +16,6 @@ const Message = ({ m, currentUser, socket }) => {
     const deleteClick = (msg_id) => socket.emit("delete", msg_id)
     const reactClick = (msg_id, reaction) => socket.emit("react", msg_id, reaction)
     const editClick = (msg_id) => {
-        console.log('hi')
         console.log(msg_id)
     }
 

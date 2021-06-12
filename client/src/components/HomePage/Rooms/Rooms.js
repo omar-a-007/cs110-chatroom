@@ -4,7 +4,7 @@ import moment from "moment"
 
 const Rooms = ( { rooms, last_room_id, handler }) => {
     return (
-    <div> {console.log( handler)}
+    <div>
         {rooms.map((room, i) => 
             <li className={ last_room_id === room._id ? 'room p-1 mb-1 active-chat' : 'room p-1 mb-1 not-active-chat' } key={i}> 
                 <div className="img_cont ml-2"><img src="/user.png" className="rounded-circle user_img" alt="room icon"/></div>
