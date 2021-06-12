@@ -80,7 +80,8 @@ To specify a different port for the client: modify `/client/package.json` under 
     
 #### Profile
 -   🙎‍♂️ You can update your Display Name
-    TODO: Full profile buildout. The schema is already there to store a lot more information, such as favorite rooms, etc.
+
+*TODO: Full profile buildout. The schema is already there to store a lot more information, such as favorite rooms, etc.*
     
 #### Everywhere 🌎
 -   Authentication 🔐
