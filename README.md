@@ -16,14 +16,17 @@
 ## View Frontend
 
 Navigate to: http://localhost:3000
-Ports can be customized in `client/constants` and `server/constants` \\
-Make sure you adjust the related port as they rely on each other.
+Ports can be customized in `client/constants` and `server/constants`
+
+Make sure you adjust the related port as they rely on each other
 
 ## Info
 
-I completed the project using using websockets, thus both a server and client server are required to be running.
-Environment variables can be found in the client/server constants folder (for setting port, etc)
-The design style is heavily inspired by discord.
+Design style inspired by Discord
+
+Sleek ChatRooms that use WebSockets (socket.io), allowing for lightning fast communication with anyone in the world! 
+Multiple rooms are supported 
+More features coming soon ✨
 
 ### Known Issues:
 /login and /signup
@@ -62,26 +65,26 @@ To specify a different port for the client: modify `/client/package.json` under 
 
 #### Chatroom
 -   Emoticons are emojified, thats things like :) :D ;D etc etc
--   Author online status is displayed with a green (online) or gray (offline) dot
--   Entering an empty string informs the user to enter a message
--   Displays a history of messages (limited to 20, but limit is customizable through constants)
--   Chat scrolls to bottom on loading/new message.
+-   🔴 User online status is displayed with a green (online) or gray (offline) dot
+-   📛 Entering an empty string informs the user to enter a message 
+-   📜 Displays a history of messages (limited to 20, but limit is customizable through constants)
+-   ⏬ Chat scrolls to bottom upon loading or recieving a new message
     -   In the bottom right, there is a small black dot when you click on it, it will scroll to the bottom
--   Hover over a message for additional actions
-    As the author of a message, you can delete it (other actions are not yet supported). If youre not the author this isnt displayed.
-    On the backend, the logged in user is also checked with the claimed author id to protect against forgery attacks
--   Socket Authentication Middleware
+-   🎬 Hover over a message for additional actions
+    ❌ As the author of a message, you can delete it (other actions are not yet supported). If youre not the author this isnt displayed.
+    In the backend, the logged in user is also checked with the claimed author id to protect against forgery attacks
+-   🔐 Socket Authentication Middleware
     Persists token and makes sure we are logged in when messaging
     
 #### Profile
--   You can update your Display Name
+-   🙎‍♂️ You can update your Display Name
     TODO: Full profile buildout. The schema is already there to store a lot more information, such as favorite rooms, etc.
     
 #### Everywhere
--   Authentication, Data Validation+Sanitization (via express-validator, socket based checking, and Formik)
+-   🌎 Authentication, Data Validation+Sanitization (via express-validator, socket based checking, and Formik)
 
 #### Server
--   Api Routes
+-  Api Routes
     -   Everything is serverd through <server>/api/
     -   All routes have been thoroughly tested via Postman
 -   Sockets served via the default GET <server>/socket.io/
