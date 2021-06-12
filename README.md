@@ -26,21 +26,21 @@ Client: http://chat-client-oa.herokuapp.com/
 2. npm install
 3. npm start
 
-## View Frontend
+### View Frontend
 
 Navigate to: http://localhost:3000  
-Ports can be customized in `client/constants` and `server/constants`
+Ports can be customized in `client/constants` and `server/constants`  
 
 Make sure you adjust the related port as they rely on each other
 
-### Known Issues:
+## Known Issues:
 /login and /signup
 -   If the action fails (invalid data, already taken account, etc), you need to re-enter your data.
 -   The easiest way is to refresh.
 -   You will still see your old data, BUT: it will not persist through to the form action, causing the login/signup to fail again.
     -   I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
 
-### Changeable Configuration:
+## Changeable Configuration:
 Some of the settings you may wish to modify include the following
 
 ***/server/constants/default.json***
