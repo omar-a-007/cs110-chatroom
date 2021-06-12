@@ -5,7 +5,6 @@ const cors = require("cors")
                         //const createError = require('http-errors'); // Useful for rapidly creating error pages.
                         //const path = require('path');               // We dont serve any pages from the server, so this isnt needed.
                         //const cookieParser = require('cookie-parser')
-const {ChatMessage, ChatRoom, UserModel} = require('./models')
 const {messages, create_msg, edit_msg, delete_msg} = require('./utilities/room')
 const app = express()
 
@@ -16,8 +15,8 @@ const app = express()
  * @client_origins - Define the whitelist of allowed origins for socket requests
   ***************
  */
-const SERVER_PORT    = config.get('server_port')
-const client_origins = config.get('client_address')
+const SERVER_PORT    = process.env.PORT   || config.get('server_port')
+const client_origins = process.env.CLIENT || config.get('client_address')
 
 /**
  ************************
