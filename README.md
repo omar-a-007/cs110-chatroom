@@ -17,7 +17,7 @@ You can't do much with the server on its own (unless you use POSTMAN or similar)
 I left a few GET API paths open for testing purposes
 
 -    https://chat-server-oa.herokuapp.com/api/room/list
--    https://chat-server-oa.herokuapp.com/api/room/messages/:roomID
+-    https://chat-server-oa.herokuapp.com/api/room/messages/:roomID  
     -   I left this route temporarily open (no athentication middleware) for testing and api demo purposes. Use the /room/list API to get a valid roomID
 
 ## Local Usage Instructions
