@@ -8,7 +8,6 @@ import * as yup from "yup"
 import io from 'socket.io-client'
 
 import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/constants'
-//import { getRoomMessages } from "../../utils/requests"
 import Messages from './Messages/Messages'
 import "./ChatRoom.css"
 
@@ -48,7 +47,6 @@ function ChatRoomPage( {location} ) {
     useEffect(() => {
         socket.on('message', (message) => setMessages([ ...messages, message ]))    // Add message to end of messages array
         socket.on('deleted', (msg_id) => setMessages(messages.filter(msg => msg._id !== msg_id)))
-        console.log(messages)
 
         return() => { socket.off()  }
     }, [messages]) // Only trigger when messages array changes
@@ -81,17 +79,10 @@ function ChatRoomPage( {location} ) {
     const handleSubmit = async (evt) => {
         try {
             setSpinner(true)
-            console.log("handleSubmit")
-            console.log(evt)
             const isValid = await schema.validate(evt)
             if (!isValid)  throw new Error("Invalid data in handleSubmit")
-            
-            const data = Object.assign({}, evt)
-            data.roomID = getChatRoomID()
-            data.message = evt.message
-            data.author = getCurrentUserID()
-            console.log(data)
-            socket.emit("message", data)
+
+            socket.emit("message", { message: evt.message, roomID: getChatRoomID(),  author: getCurrentUserID() })
             evt.message = ''
         }
         catch (e) { console.log(e) }

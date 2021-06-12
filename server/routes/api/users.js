@@ -54,6 +54,8 @@ const Account = require("../../utilities/users")
  * @route - /api/login
  * @method - POST
  * @description - User Login
+ * * Note: Don't send 203, 204, etc as error codes.
+ * *       React doesn't treat them as errors and so doesnt generate an error response.
  */
  router.post("/login",
      // Validate and Sanitize
@@ -62,76 +64,47 @@ const Account = require("../../utilities/users")
       check("password", "Please enter a valid password").isLength({ min: 6 }).escape()
     ],
     async (req, res, next) => {
-    try{
-    	const errors = validationResult(req);
-		if (!errors.isEmpty())
-			return res.status(400).json({ errors: errors.array() })
+        try{
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) 
+                return res.status(400).json({ errors: errors.array() })
 
-    	const data = {
-            email: req.body.email,
-            password: req.body.password
-    	}
-
-    	Account.login(data)
-        .then((user) => {
-            createToken( { id: user._id })
-            .then ( token => res.status(200).json({token, userId: user.id}))
-            .catch(e => {res.status(400).json("error"); console.log(e)})
-        })
-        .catch((err)=>{
-            throw ( {'code': 500, 'msg': err} ) } )
-    } catch (e) {
-        console.log(e)
-        if (e.code)
-            res.status(e.code)
-        res.json({ error: e });
-    }
+            let user = await Account.login({ email: req.body.email, password: req.body.password })
+            let token = await createToken( { id: user._id })
+            
+            res.status(200).json({token, userId: user.id})
+        }
+        catch (e) { res.status(e.code ?? 300).send({ errors: [ {msg: e.msg ?? 'Invalid Login'} ] }) }
     }
 )
-
-
 
 /**
  * @route - /api/register
  * @method - POST
  * @description - Register New Account
+ * * Note: Don't send 203, 204, etc as error codes.
+ * *       React doesn't treat them as errors and so doesnt generate an error response.
  */
  router.post("/register",
      // Validate and Sanitize
     [
-        check('username', "Please enter a valid username").not().isEmpty().escape(),
-        check('full_name', "Please enter a valid display name").not().isEmpty().escape(),
+        check('username', "Please enter a valid username, minimum 3 characters").isLength({ min: 3 }).escape(),
+        check('full_name', "Please enter a valid display name, minimum 3 characters").isLength({ min: 3 }).escape(),
         check("email", "Please enter a valid email").isEmail().escape(),
-        check("password", "Please enter a valid password").isLength({ min: 6 }).escape()
+        check("password", "Please enter a valid password, minimum 6 characters").isLength({ min: 6 }).escape()
     ],
     async (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty())
-            return res.status(203).json({errors: errors.array()});
+        try{
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) 
+                return res.status(400).json({ errors: errors.array() })
+
+            const user = await Account.create({ username: req.body.username, full_name: req.body.full_name, email: req.body.email, password: req.body.password })
+            let token = await createToken( { id: user._id })
             
-        const data = {
-            username: req.body.username,
-            full_name: req.body.full_name,
-            email: req.body.email,
-            password: req.body.password
+            res.status(200).json({token, userId: user.id})
         }
-
-
-        try {
-            Account.create(data)
-            .then((user) => {
-                createToken( { userId: user._id })
-                .then ( token => res.status(200).json({token, userId: user.id}))
-                .catch(e => {res.status(400).json("error"); console.log(e)})
-            })
-            .catch((err)=>{
-                throw ( {'code': 500, 'msg': err} ) } )
-        }
-        catch (e) {
-            res.status(203).json({ error: e })
-           
-        }
-
+        catch (e) { res.status(e.code ?? 300).send({ errors: [ {msg: e.msg ?? 'Invalid Login'} ] }) }
     }
 )
 
