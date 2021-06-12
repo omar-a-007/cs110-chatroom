@@ -66,6 +66,7 @@ Environment variables can be found in the client/server constants folder (for se
 -   socket.io           ✨ Magic ✨ Also is the reason a seperate client/server are needed and made doing this 10-20x harder, easily. That said, I learned a lot.
 
 #### Client Packages
+*Note: There are several packages that I installed, played with, and removed but remain in the package.json such as emoji-mart*
 -   axios                   (making web requests more easily)
 -   bootstrap               
 -   formik                  (More advanced form creation)
@@ -74,5 +75,4 @@ Environment variables can be found in the client/server constants folder (for se
 -   react-scroll-to-bottom  (Scroll an enclosed section to the bottom. Just as easy to do with useRef, which I was doing previously.)
 -   yup                     (JS schema builder, mainly used in conjunction with formik)
 -   socket.io-client        ✨ Magic ✨
-    
-    -   -   Note: There are several packages that I installed, played with, and removed but remain in the package.json such as emoji-mart
+
