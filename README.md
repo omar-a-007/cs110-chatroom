@@ -117,6 +117,11 @@ To specify a different port for the client: modify `/client/package.json` under 
 -   socket.io-client        ✨ Magic ✨
 
 ## Screenies
+Homepage with list of Chatrooms
 ![Screenshot: Homepage](./screenies/Homepage.png)
+
+Inside a chatroom
 ![Screenshot: Chatroom](./screenies/In_Chatroom.png)
+
+Other pages
 ![Screenshot: Various Pages](./screenies/Pages.png)
