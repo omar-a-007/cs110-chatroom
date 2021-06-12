@@ -16,7 +16,8 @@
 ## View Frontend
 
 Navigate to: http://localhost:3000
-Ports can be customized in client/constants and server/constants. Make sure you adjust the related port as they rely on each other.
+Ports can be customized in `client/constants` and `server/constants`
+Make sure you adjust the related port as they rely on each other.
 
 ## Info
 
