@@ -58,10 +58,11 @@ To specify a different port for the client: modify `/client/package.json` under 
 
 ## Features:
 #### Homepage
-   🔼🔽 Sort Chatrooms by creation date (Ascending, decending)
-   📊 Room stats: Participants, Messages, Creation Date
-   🔎 Search Rooms
-   🎬 Static (for now) room image
+-   🔼🔽 Sort Chatrooms by creation date (Ascending, decending)
+-   📊 Room stats: Participants, Messages, Creation Date
+-   🔎 Search Rooms
+-   🗑🎞🔨 Long room names will truncate with ellipses 
+-   🎬 Static (for now) room image
 
 
 #### Chatroom
@@ -81,8 +82,9 @@ To specify a different port for the client: modify `/client/package.json` under 
 -   🙎‍♂️ You can update your Display Name
     TODO: Full profile buildout. The schema is already there to store a lot more information, such as favorite rooms, etc.
     
-#### Everywhere
--   🌎 Authentication, Data Validation+Sanitization (via express-validator, socket based checking, and Formik)
+#### Everywhere 🌎
+-   Authentication 🔐
+-   Data Validation+Sanitization 🧺 (via express-validator, socket based checking, and Formik)
 
 #### Server
 -  Api Routes
