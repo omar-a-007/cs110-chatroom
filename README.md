@@ -39,10 +39,10 @@ Some of the settings you may wish to modify include the following
 -   **server_port**: the port the server runs on and listens for queries and socket data
 -   **client_address**: array of clients allowed to make socket requests. If you change the client port, make sure you change this too.
 -   **message_history_limit**: The number maximum number of messages that will be retrieved when entering a room
--   -   Why would we want to limit this? Two reasons
--   -   1) Imagine a chatroom with thousands of messages. Because of how it is configured to populate between different MongoDB collections (ChatMessage populates User data), internally it runs a seperate query for ***each** record in order to populate that data.
--   -   2) Your users only have so much compute power. We want to keep our website fast and lag-free!
--   -   Future plans include adding a "load more" at the top of chat rooms
+    -   Why would we want to limit this? Two reasons
+    -   1) Imagine a chatroom with thousands of messages. Because of how it is configured to populate between different MongoDB collections (ChatMessage populates User data), internally it runs a seperate query for ***each** record in order to populate that data.
+    -   2) Your users only have so much compute power. We want to keep our website fast and lag-free!
+    -   Future plans include adding a "load more" at the top of chat rooms
 -   JWT_SECRET: Please note, changing this will invalidate all your users, requiring them to sign up new accounts. 
 -   -   Future plans include a tool that wipes all users passwords and emails them with a secure link to create a new password
 -   JWT_TOKEN_DURATION: How long (in seconds) a token lasts for, after which a user will be logged out. 
