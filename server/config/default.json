@@ -1,6 +1,7 @@
 {
     "mongoURI": "mongodb+srv://omar:5f75vLXtZOVL9OQJ@cluster0.vdu7j.mongodb.net/Lab4y?retryWrites=true&w=majority&authSource=admin",
     "server_port": 3003,
+    "message_history_limit": 40,
     "client_address": ["localhost:3000"],
     "JWT_SECRET": "define-in-constants",
     "JWT_TOKEN_DURATION": 86400
