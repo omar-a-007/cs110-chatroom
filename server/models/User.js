@@ -13,24 +13,31 @@ const UserSchema = mongoose.Schema({
   last_visited_room_id:{     type: String   },
 
   bio:      { type:String,  default:'', maxlength:400, trim: true },
-  birthday: { type: Date   }, // Delete?
-  gender:   { type: String }, // Delete?
-  language: { type: String }, // Delete?
-  country:  { type: String }, // Delete?
+  birthday: { type: Date   },
+  language: { type: String },
+  country:  { type: String },
 
-  login_type: { type: String,    default:'email' /*FUTURE SUPPORT: email, username, phone, social*/  }, // TODO remove? 
+  role:       { type: String,    default:'user' /*user,moderator,admin*/  },
+  login_type: { type: String,    default:'email' /*FUTURE SUPPORT: email, username, phone, social*/  }, 
 
   // Might be better as an object. Show: {age: boolean, city: boolean, ...}
-  allow_to_show_age:  { type: Boolean, default: true },
-  allow_to_show_city: { type: Boolean, default: true },
+  allow_to_show : {
+      birthday: {type: Boolean},
+      age:  { type: Boolean, default: true },
+      city: { type: Boolean, default: true },    
+  },
 
-  favorite_rooms_arr: [],
-  favorite_users_arr: [],
+  favorite: {
+    rooms: [],
+    users: []
+  },
 
   //Get users ips from req and detect its country
-  ip_address:     {    type: String  }, //TODO change to object ip [{ip_address, location}]
-  ip_locate_info: {    type: Object  },
-  role:{    type: String,    default:'user' /*user,moderator,admin*/  },
+  ip: {
+    address: { type: String },
+    details: { type: Object } //location info
+  },
+  
 }, {
   timestamps: true, // automatically create/maintain timestamp fields:created_at, updated_at
   toObject: { virtuals: true },
