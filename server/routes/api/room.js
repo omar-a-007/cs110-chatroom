@@ -24,12 +24,11 @@ const { authenticate } = require('../../utilities/token')
  * @description - Join a Room
  * @route - /api/room/join
  * @method - POST
- * ! DELETE THIS ROUTE. Requires modifiying client (React). Go to :roomID directly instead of /join
+ * ! DELETE THIS ROUTE. Requires modifiying client (React). Go to /messages/:roomID directly instead of /join
  */
  router.post("/join", authenticate,
     [
-        // ! Sanitize
-        check('roomId', "Please select room").not().isEmpty(),
+        check('roomId', "Please select room").not().isEmpty().escape(),
     ],
     async (req, res) => {
         const errors = validationResult(req)
@@ -44,6 +43,7 @@ const { authenticate } = require('../../utilities/token')
  * @description - Retrieve a room's message history (upon joining a room)
  * @route - /api/room/messages/:roomID
  * @method - GET
+ * ! Secure route with middleware once finished with class.
  */
  router.get("/messages/:roomID", 
     [
