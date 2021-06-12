@@ -58,10 +58,11 @@ To specify a different port for the client: modify `/client/package.json` under 
 
 ## Features:
 #### Homepage
--   Sort Chatrooms by creation date (Ascending, decending)
--   Room stats: Participants, Messages, Creation Date
--   Static (for now) room image
--   Search Rooms
+-   🔼🔽 Sort Chatrooms by creation date (Ascending, decending)
+-   📊 Room stats: Participants, Messages, Creation Date
+-   🔎 Search Rooms
+-   🎬 Static (for now) room image
+
 
 #### Chatroom
 -   😏 Emoticons are emojified, thats things like :) :D ;D etc etc
