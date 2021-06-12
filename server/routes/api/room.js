@@ -59,10 +59,12 @@ const { authenticate } = require('../../utilities/token')
 
 
 /**
+ * ! Deprecated
  * @description - Detail Room
  * @route - /api/room/detail
  * @method - POST
  */
+/*
  router.post("/detail", authenticate,
     [
         check('roomId', "Please select room").escape().not().isEmpty(),
@@ -77,6 +79,7 @@ const { authenticate } = require('../../utilities/token')
         }
         catch (e) { console.log(e); res.status(500).send({ message: "Error in Fetching rooms.." }) }
  });
+ */
 
  
 /**
