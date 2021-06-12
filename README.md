@@ -28,6 +28,10 @@ Sleek ChatRooms that use WebSockets (socket.io), allowing for lightning fast com
 
 More features coming soon ✨
 
+### Want to take it for a spin? Sure thing! 
+Server: https://chat-server-oa.herokuapp.com/  
+Client: http://chat-client-oa.herokuapp.com/
+
 ### Known Issues:
 /login and /signup
 -   If the action fails (invalid data, already taken account, etc), you need to re-enter your data.
