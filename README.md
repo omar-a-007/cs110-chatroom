@@ -15,13 +15,14 @@
 
 ## View Frontend
 
-Navigate to: http://localhost:3003
+Navigate to: http://localhost:3000
 Ports can be customized in client/constants and server/constants. Make sure you adjust the related port as they rely on each other.
 
 ## Info
 
 I completed the project using using websockets, thus both a server and client server are required to be running.
 Environment variables can be found in the client/server constants folder (for setting port, etc)
+The design style is heavily inspired by discord.
 
 ### Known Issues:
 /login and /signup
@@ -29,6 +30,26 @@ Environment variables can be found in the client/server constants folder (for se
 -   The easiest way is to refresh.
 -   You will still see your old data, BUT: it will not persist through to the form action, causing the login/signup to fail again.
 -   -   I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
+
+### Configuration:
+Some of the settings you may wish to modify include the following
+
+***/server/constants/default.json***
+-   mongoURI: Make the project work on any mongo instance! Even a local one :)
+-   **server_port**: the port the server runs on and listens for queries and socket data
+-   **message_history_limit**: The number maximum number of messages that will be retrieved when entering a room
+-   -   Why would we want to limit this? Two reasons
+-   -   1) Imagine a chatroom with thousands of messages. Because of how it is configured to populate between different MongoDB collections (ChatMessage populates User data), internally it runs a seperate query for ***each** record in order to populate that data.
+-   -   2) Your users only have so much compute power. We want to keep our website fast and lag-free!
+-   -   Future plans include adding a "load more" at the top of chat rooms
+-   JWT_SECRET: Please note, changing this will invalidate all your users, requiring them to sign up new accounts. 
+-   -   Future plans include a tool that wipes all users passwords and emails them with a secure link to create a new password
+-   JWT_TOKEN_DURATION: How long (in seconds) a token lasts for, after which a user will be logged out. 
+
+***/client/constants/default.json***
+-   **SERVER_PORT**: Make sure you change this if you change the servers port.
+Note: Do you want to run the client on a different port? React is configured to run on port 3000 by default (and will prompt you if its in use to automatically pick another)
+To specify a different port for the client: modify `/client/package.json` under scripts: start, change this to `"start": "PORT=3006 react-scripts start"` as an example to change it to port 3006
 
 ## Features:
 #### Homepage
