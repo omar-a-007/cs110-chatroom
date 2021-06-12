@@ -10,8 +10,14 @@ More features coming soon ✨
 
 ## Online Demo
 ***Want to take it for a spin? Sure thing!***  
+Client: http://chat-client-oa.herokuapp.com/  
+
 Server: https://chat-server-oa.herokuapp.com/  
-Client: http://chat-client-oa.herokuapp.com/
+You can't do much with the server on its own (unless you use POSTMAN or similar)  
+I left a few GET API paths open for testing purposes  
+-    https://chat-server-oa.herokuapp.com/api/room/list
+-    https://chat-server-oa.herokuapp.com/api/room/messages/:roomID
+    -    I left this route temporarily open (no athentication middleware) for testing and api demo purposes. Use the /room/list API to get a valid roomID
 
 ## Local Usage Instructions
 ### Start Server
