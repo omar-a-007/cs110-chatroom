@@ -29,7 +29,7 @@ The design style is heavily inspired by discord.
 -   If the action fails (invalid data, already taken account, etc), you need to re-enter your data.
 -   The easiest way is to refresh.
 -   You will still see your old data, BUT: it will not persist through to the form action, causing the login/signup to fail again.
--   -   I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
+    -   I use state variables so Im not quite sure why this occurs, but I decided to focus on other elements of the project instead.
 
 ### Changeable Configuration:
 Some of the settings you may wish to modify include the following
@@ -39,12 +39,12 @@ Some of the settings you may wish to modify include the following
 -   **server_port**: the port the server runs on and listens for queries and socket data
 -   **client_address**: array of clients allowed to make socket requests. If you change the client port, make sure you change this too.
 -   **message_history_limit**: The number maximum number of messages that will be retrieved when entering a room
-    -   Why would we want to limit this? Two reasons
-    -   1) Imagine a chatroom with thousands of messages. Because of how it is configured to populate between different MongoDB collections (ChatMessage populates User data), internally it runs a seperate query for ***each** record in order to populate that data.
-    -   2) Your users only have so much compute power. We want to keep our website fast and lag-free!
+        Why would we want to limit this? Two reasons
+        1) Imagine a chatroom with thousands of messages. Because of how it is configured to populate between different MongoDB collections (ChatMessage populates User data), internally it runs a seperate query for ***each** record in order to populate that data.
+        2) Your users only have so much compute power. We want to keep our website fast and lag-free!
     -   Future plans include adding a "load more" at the top of chat rooms
 -   JWT_SECRET: Please note, changing this will invalidate all your users, requiring them to sign up new accounts. 
--   -   Future plans include a tool that wipes all users passwords and emails them with a secure link to create a new password
+    -   Future plans include a tool that wipes all users passwords and emails them with a secure link to create a new password
 -   JWT_TOKEN_DURATION: How long (in seconds) a token lasts for, after which a user will be logged out. 
 
 ***/client/constants/default.json***
@@ -81,8 +81,8 @@ To specify a different port for the client: modify `/client/package.json` under 
 
 #### Server
 -   Api Routes
--   -   Everything is serverd through <server>/api/
--   -   All routes have been thoroughly tested via Postman
+    -   Everything is serverd through <server>/api/
+    -   All routes have been thoroughly tested via Postman
 -   Sockets served via the default GET <server>/socket.io/
 -   Everything else is blocked with a basic 404 Not Authorized Response
 
