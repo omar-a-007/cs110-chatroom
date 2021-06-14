@@ -19,11 +19,13 @@ function Login(props) {
 
     const handleSubmitClick = async (e) => {
         e.preventDefault()
+        const target = e.target
+
         if(!email || !password)
             return setErrorMessage('Please fill out all of the fields.')
 
         try {
-            e.target.disabled = true    // Disable the login button. No spam clicking!
+            target.disabled = true    // Disable the login button. No spam clicking!
 
             const response = await axios.post(API_BASE_URL+'/api/user/login', { "email": email, "password": password })
             if (response.status !== 200)
@@ -36,7 +38,7 @@ function Login(props) {
             redirectToHome();
         }
         catch (error) { 
-            e.target.disabled = false
+            target.disabled = false
             console.log(error?.response?.data?.errors?.map(error => setErrorMessage(error.msg)))
         }
     }

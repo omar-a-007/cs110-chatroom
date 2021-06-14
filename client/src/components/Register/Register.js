@@ -44,8 +44,9 @@ function Register(props) {
         if(password1 !== password2)
             return setErrorMessage('Passwords do not match.')
         
+        const target = e.target       // e.target becomes null in the catch statement
         try {
-            e.target.disabled = true    // Disable the registration button. No spam clicking!
+            target.disabled = true    // Disable the registration button. No spam clicking!
 
             const response = await axios.post(API_BASE_URL+'/api/user/register', { "full_name": fullName, "username":username, "email": email, "password": password1 })
             if (response.status !== 200)
@@ -58,7 +59,7 @@ function Register(props) {
             redirectToProfile()
         }
         catch (error) { 
-            e.target.disabled = false
+            target.disabled = false
             console.log(error?.response?.data?.errors?.map(error => setErrorMessage(error.msg)))
         }  
     }
