@@ -14,29 +14,28 @@ import "./ChatRoom.css"
 const schema = yup.object({ message: yup.string().required("Message is required") })
 
 let socket;
-let token = localStorage.getItem(ACCESS_TOKEN_NAME)
-
+const getAuthToken     = () => localStorage.getItem(ACCESS_TOKEN_NAME)
 const getChatRoomID    = () => localStorage.getItem("chatRoomId")
 const getChatRoomName  = () => localStorage.getItem('chatRoomName')
 const getCurrentUserID = () => localStorage.getItem('userId')
 
 function ChatRoomPage( {location} ) {    
     const [messages, setMessages] = useState([])
-    const [spinner, setSpinner] = useState(false)
     const [participants, setParticipants] = useState([])
     const [redirectLogin, setRedirectLogin] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem(ACCESS_TOKEN_NAME)
+        const token = getAuthToken()
         if(!token ) return setRedirectLogin(true)
 
         // Establish socket connection with server
-        socket = io( API_BASE_URL, { query: { "authToken": token} } )
+        socket = io( API_BASE_URL, { query: { "authToken": token, userId: getCurrentUserID()} } )
 
         // "Connect" is provided by socket.io; triggers upon a successful connection
         socket.on('connect', () => { socket.emit("join", getChatRoomID()) } )
 
         // Load the rooms message history
+        //socket.on('init', (msgs) => {console.log(msgs); setMessages( msgs?.reverse() )} )
         socket.on('init', (msgs) => setMessages( msgs.reverse() ) )
 
         return () => { socket.off() }
@@ -45,6 +44,8 @@ function ChatRoomPage( {location} ) {
     useEffect(() => {
         socket.on('message', (message) => setMessages([ ...messages, message ]))    // Add message to end of messages array
         socket.on('deleted', (msg_id) => setMessages(messages.filter(msg => msg._id !== msg_id)))
+        socket.on('edited', (msg_id, new_msg) => setMessages(messages.map(msg => msg._id === msg_id ? new_msg : msg)))
+            //(msg => msg._id !== msg_id)))
 
         return() => { socket.off()  }
     }, [messages]) // Only trigger when messages array changes
@@ -60,9 +61,7 @@ function ChatRoomPage( {location} ) {
             if (message) socket.emit('message', message, () => setMessages(''))
         }
         const getMessages = async () => {
-            setSpinner(true)
             const response = await getRoomMessages(getChatRoomID());
-            setSpinner(false)
             setMessages(response.data);
             setInitialized(true);
         }
@@ -76,7 +75,6 @@ function ChatRoomPage( {location} ) {
 
     const handleSubmit = async (evt) => {
         try {
-            setSpinner(true)
             const isValid = await schema.validate(evt)
             if (!isValid)  throw new Error("Invalid data in handleSubmit")
 
@@ -101,7 +99,7 @@ function ChatRoomPage( {location} ) {
                         <Form noValidate onSubmit={handleSubmit}>
                             <Form.Row>
                                 <Form.Group as={Col} md="12" controlId="handle">
-                                    <Form.Control  type="text" name="message" placeholder="Positive Vibes :)" className="shadow-none search" autoComplete="off"
+                                    <Form.Control  type="text" name="message" placeholder="Positive Vibes :)" className="shadow-none " autoComplete="off"
                                                     value={values.message || ""} onChange={handleChange} isInvalid={touched.message && errors.message} />
                                     <Form.Control.Feedback type="invalid">
                                         {errors.message}

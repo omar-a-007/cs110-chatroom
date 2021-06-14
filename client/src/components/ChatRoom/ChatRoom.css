@@ -53,11 +53,12 @@
 	align-content: center;
 }
 
-#msg input {
-	border-radius: 99px !important;
+#msg input, .edit_msg input {
+	border-radius: 9px !important;
 	background-color: rgba(0, 0, 0, 0.3) !important;
 	border: 0 !important;
 	color: white !important;
+	width: 100%;
 	max-width: 100%;
 }
 #msg{
@@ -65,21 +66,6 @@
 	margin: 8px;
 	margin-bottom: 0;
 	padding-bottom:0;
-}
-.search {
-	border-radius: 15px 0 0 15px !important;
-	background-color: rgba(0, 0, 0, 0.3) !important;
-	border: 0 !important;
-	color: white !important;
-}
-
-.search_form {
-	margin-left: 4px;
-}
-
-.search:focus {
-	box-shadow: none !important;
-	outline: 0px !important;
 }
 
 .card-footer input, .card-footer input:focus {
@@ -120,16 +106,6 @@
 	color: white !important;
 	cursor: pointer;
 }
-
-.search_btn {
-	border-radius: 0 15px 15px 0 !important;
-	background-color: rgba(0, 0, 0, 0.3) !important;
-	border: 0 !important;
-	color: white !important;
-	cursor: pointer;
-}
-
-
 
 .user_img_msg {
 	position: absolute;

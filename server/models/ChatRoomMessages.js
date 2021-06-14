@@ -6,7 +6,7 @@ const ChatRoomMessagesSchema = mongoose.Schema({
   author_id:    { type: Schema.Types.ObjectId, ref:'user',     required: true, index: true },
   chat_room_id: { type: Schema.Types.ObjectId, ref:'chatroom', required: true, index: true }, 
 }, {
-  timestamps: true, // automatically create/maintain timestamp fields:created_at, updated_at
+  timestamps: true, // automatically create/maintain timestamp fields:createdAt, updatedAt
   toObject: { virtuals: true },
   toJSON: { virtuals: true } 
 })
@@ -17,7 +17,7 @@ ChatRoomMessagesSchema
     localField: 'author_id', 
     foreignField: '_id',
     justOne: true,
-    select: 'is_online'
+    //select: 'is_online'
   })
 
 module.exports = mongoose.model("ChatRoomMessages", ChatRoomMessagesSchema);

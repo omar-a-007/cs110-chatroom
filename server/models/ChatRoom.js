@@ -10,7 +10,7 @@ const ChatRoomSchema = mongoose.Schema({
   room_country:  { type: String,    default: 'us' }, 
   // participants: [{type: Schema.Types.ObjectId, ref:'user'}], // I aggregate it in room_utils.detailed_list
 }, {
-  timestamps: true, // automatically create/maintain timestamp fields:created_at, updated_at
+  timestamps: true, // automatically create/maintain timestamp fields:createdAt, updatedAt
   toObject: { virtuals: true },
   toJSON: { virtuals: true } 
 });

@@ -21,7 +21,7 @@
   white-space: nowrap;
 }
 
-.msg_grid:hover {
+.msg_grid:hover, .msg_grid.editing {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -36,6 +36,7 @@
   border-radius: 4px;
   visibility: hidden;
   z-index: 100;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .actions_overlay i {
@@ -105,4 +106,30 @@
   div.messageContainer p {
     margin-block-start: 8px;
     margin-block-end: 8px;
+  }
+
+  .edit_msg > div{
+    font-size: 10px;
+  }
+
+  .edit_msg input {
+    padding: 8px 12px 8px 12px;
+    margin: 6px 0 4px 0;
+    width: 99%;
+  }
+  .edit_msg input:focus {
+    border: 0;
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+
+  .edit_msg button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline;
+    margin: 0;
+    padding: 0 4px 0 4px;  /* top right bottom left */
+    color: #98f;
   }

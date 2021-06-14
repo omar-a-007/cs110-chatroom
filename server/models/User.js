@@ -39,7 +39,7 @@ const UserSchema = mongoose.Schema({
   },
   
 }, {
-  timestamps: true, // automatically create/maintain timestamp fields:created_at, updated_at
+  timestamps: true, // automatically create/maintain timestamp fields:createdAt, updatedAt
   toObject: { virtuals: true },
   toJSON: { virtuals: true } 
 });

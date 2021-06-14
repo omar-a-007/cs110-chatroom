@@ -1,6 +1,8 @@
 var ObjectID = require('mongoose').Types.ObjectId
 const {ChatRoom, ChatMessage} = require('../models')
 const history_limit = require('config').get('message_history_limit')
+const validator = require('validator')
+
 
 /* Do the below functions actually await/async correctly? 
  * Have encountered an issue where it returns a pending promise that later resolves, requiring an await on the calling method
@@ -22,7 +24,8 @@ let create   = async(data) => {
 
 let detailed_list = async () => {
     try {
-        const rooms = await ChatRoom.find( {status:true} ).lean()
+        const rooms = await ChatRoom.find( {status:true} ).sort({createdAt: -1}).lean()
+        
         const room_stats = await ChatMessage.aggregate([
             {
               $group: {
@@ -54,6 +57,7 @@ let detailed_list = async () => {
         // Join the Arrays (rooms + room_stats)
         // room._id is an object, concatenating it with a string returns a string that can be compared
         rooms.map( (room) => {room.room_stats = room_stats.find(x => x.chat_room == (room._id + '')) ?? {users: [], msg_count: 0, user_count: 0}} )
+        //console.log (rooms)
         return rooms
     }
     catch (e) {console.log(e)}
@@ -67,7 +71,19 @@ const create_msg = async ({author_id, chat_room_id, message}) => {
 }
 
 const edit_msg = async (msg_id, new_msg, logged_in_ID) => {
-
+    try {
+        if (new_msg.length === 0) return null
+        const sanitized_message = validator.escape(new_msg).trim()
+        let edited = await ChatMessage.findOneAndUpdate(
+            { _id: msg_id, author_id: logged_in_ID},
+            {message: sanitized_message},
+            {new: true}
+        )
+            .populate('author', 'socket_id birthday is_online image bio username full_name')
+            .lean()
+        return edited
+    }
+    catch (e) { console.log(e); return false }   
 }
 
 const delete_msg = async (msg_id, logged_in_ID) => {

@@ -27,7 +27,7 @@ const Rooms = ( { rooms, last_room_id, handler }) => {
                     </div>
                     <div>
                         <div >Room Created </div>
-                        <div className="ml-4 mt-1"> {moment(room.created_at).format('M-D-YY')} </div>
+                        <div className="ml-4 mt-1"> {moment(room.createdAt).format('M-D-YY')} </div>
                     </div>
                 </div>
                         

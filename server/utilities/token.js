@@ -42,25 +42,24 @@ const authenticate = async (req, res, next) => {
 }
 
 const authenticate_socket = (io) => {
-  io.use(async (socket, next) => {
+  io.use( async(socket, next) => { 
     try {
       const token = socket.handshake.query.authToken
       if (!token || token === 'null') throw new Error('Token not found')
-      
-      console.log(socket.handshake.query)
-      console.log(token)
+  
       const validated_token = await validToken(token) //token contains user id, token, expiration
       
       // Retrieve the user as a mongoose document and set this to socket.user, allowing us to modify it easily
-      const user = await UserModel.findOne({_id: validated_token.id}, ['_id', 'socket_id', 'username', 'full_name'])
+      const user = await UserModel.findOne({_id: validated_token.id}, ['_id', 'socket_id', 'username', 'full_name'])  
       socket.user = user
+  
       console.log('validToken (Socket) Success')
-      return next() // Allows the socket to continue being used
+      return next() 
     }
-    catch (e) {
-      console.log('validToken (Socket) Fail')
+    catch (e) { 
+      console.log('--- Socket Middleware Failure!');
       console.log(e)
-      next(new Error('unauthorized')) // Closes the socket
+      return next(new Error("unauthorized event"));
     }
   })
 }

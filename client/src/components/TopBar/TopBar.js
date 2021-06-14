@@ -42,6 +42,9 @@ function TopBar({props, location}) {
 
   function handleLogout() {
         localStorage.removeItem(ACCESS_TOKEN_NAME)
+        localStorage.removeItem("userId")
+        localStorage.removeItem("chatRoomId")
+        localStorage.removeItem("chatRoomName")
         setRedirectLogin(true);
         //props.history.push('/home')
     }

@@ -38,6 +38,9 @@ function Profile(props) {
                   console.log("Error. Removing Access Token (A)")
                   console.log(error)
                   localStorage.removeItem(ACCESS_TOKEN_NAME)
+                  localStorage.removeItem("userId")
+                  localStorage.removeItem("chatRoomId")
+                  localStorage.removeItem("chatRoomName")
                   redirectToLogin()
             });
         }
